@@ -1,4 +1,4 @@
-## NMEA-0183 message parser
+# NMEA-0183 message parser
 
 Parser used to extract data from NMEA messages received from most GPS Module, such as UBLOX neo-6m etc.
 
