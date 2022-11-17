@@ -14,6 +14,14 @@ unsigned int strLength(char* data) {
     return i;
 }
 
+unsigned int checksum(char* data) {
+    unsigned int n = strLength(data), checksum = 0;
+    for (unsigned int i = 1; i < n - 3; i++) {
+        checksum ^= data[i];
+    }
+    return checksum;
+}
+
 char* parseNMEA(char* data, int index) {
     unsigned int n = strLength(data), lowerIndex, higherIndex, comma = 0;
     int lowerFlag = 0, higherFlag = 0;
@@ -46,14 +54,11 @@ char* parseNMEA(char* data, int index) {
     }
     char* res = (char*)malloc(sizeof(char));
     int i = 0;
-    for (int iData = lowerIndex; iData <= higherIndex; iData++) {
-        if (iData != higherIndex) {
-            res[i] = data[iData];
-            i++;
-        } else {
-            res[i] = '\0';
-        }
+    for (int iData = lowerIndex; iData < higherIndex; iData++) {
+        res[i] = data[iData];
+        i++;
     }
+    res[i] = '\0';
     return res;
 }
 

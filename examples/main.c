@@ -34,7 +34,7 @@ int main() {
             printf("result: %s\n", res);
             res = parseNMEA(data[j], i++);
         }
-        printf("\n");
+        printf("checksum: %02x\n\n", checksum(data[j]));
     }
     // free(res);
     
